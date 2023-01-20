@@ -5,8 +5,8 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class MicroCodeReader {
-    public static ArrayList<Pair<String, String>> readMicroCodeFromFile(String path)
+public class MicroCodeFileReader {
+    public ArrayList<Pair<String, String>> readMicroCodeFromFile(String path)
             throws FileNotFoundException, NumberFormatException {
         Scanner scanner = new Scanner(new FileInputStream(path));
         StringBuilder lines = new StringBuilder();
@@ -14,7 +14,7 @@ public class MicroCodeReader {
             lines.append(scanner.nextLine()).append("\n");
         return splitMicroProgram(lines.toString().split("\n"));
     }
-    private static ArrayList<Pair<String, String>> splitMicroProgram(String[] microprogramLines) {
+    private ArrayList<Pair<String, String>> splitMicroProgram(String[] microprogramLines) {
         ArrayList<Pair<String, String>> codeWithLabel = new ArrayList<>();
         String[] args;
         for (String microprogramLine : microprogramLines) {
@@ -26,7 +26,7 @@ public class MicroCodeReader {
         }
         return codeWithLabel;
     }
-    public static ArrayList<Pair<String, String>> readMicroCodeFromString(String microcode) {
+    public ArrayList<Pair<String, String>> readMicroCodeFromString(String microcode) {
         return splitMicroProgram(microcode.split("\n"));
     }
 

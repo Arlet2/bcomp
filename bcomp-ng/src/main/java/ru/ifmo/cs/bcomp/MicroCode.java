@@ -33,12 +33,13 @@ public class MicroCode {
     private mc[] MP;
 
     MicroCode() {
+        MicroCodeFileReader microCodeFileReader = new MicroCodeFileReader();
         try {
-            MP = createMP(MicroCodeReader.readMicroCodeFromFile("mp.txt"));
+            MP = createMP(microCodeFileReader.readMicroCodeFromFile("mp.txt"));
         } catch (Throwable e) {
             System.out.println("Файл mp.txt не найден или произошла ошибка чтения, " +
                     "загружен стандартный интерпретатор БЭВМ.");
-            MP = createMP(MicroCodeReader.readMicroCodeFromString(
+            MP = createMP(microCodeFileReader.readMicroCodeFromString(
                             "4000000000 \n" +
                             "00A0009004 INFETCH\n" +
                             "0104009420 \n" +
